@@ -7,8 +7,10 @@ from tensorflow.keras.datasets import imdb
 # Load the word index and model
 word_index = imdb.get_word_index()
 model = load_model('model.h5')
-model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
+# model.compile(optimizer='adam', loss='binary_crossentropy', metrics=['accuracy'])
 
+dummy_data = pad_sequences([[0]], maxlen=500)  # Adjust based on input shape
+model.evaluate(dummy_data, [[0]], verbose=0)
 
 # Preprocess input function
 def preprocess_input(review):
